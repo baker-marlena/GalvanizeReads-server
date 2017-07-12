@@ -9,6 +9,12 @@ router.get("/books", (req, res) => {
   })
 })
 
+router.get("/book/:id", (req, res) => {
+  queries.getBook(req.params.id).then(book => {
+    res.json(book)
+  })
+})
+
 router.post("/newbook", validators.vaildBookSubmission, (req, res, next) => {
   queries.addBook(req.body)
     .then(results => {
