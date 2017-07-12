@@ -28,5 +28,12 @@ router.delete("/delete/:id", (req, res) => {
   )
 })
 
+router.put("/editbook/:id", validators.vaildBookSubmission, (req, res, next) => {
+  queries.updateBook(req.params.id, req.body)
+  .then(
+    res.send("success")
+  )
+})
+
 
 module.exports = router;
