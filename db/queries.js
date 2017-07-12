@@ -6,5 +6,9 @@ module.exports = {
   },
   addBook: (data) =>{
   return knex('book').insert({title:data.title, genre:data.genre, cover_url:data.cover_url, description:data.description}).returning('*');
+  },
+  deleteBook: (id) =>{
+    console.log(id)
+    return knex('book').where('id', id).del();
   }
 }

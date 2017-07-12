@@ -10,7 +10,6 @@ router.get("/books", (req, res) => {
 })
 
 router.post("/newbook", validators.vaildBookSubmission, (req, res, next) => {
-  console.log("Hit the route")
   queries.addBook(req.body)
     .then(results => {
       if(!results){
@@ -20,6 +19,13 @@ router.post("/newbook", validators.vaildBookSubmission, (req, res, next) => {
         res.send(results)
       }
     })
+})
+
+router.delete("/delete/:id", (req, res) => {
+  queries.deleteBook(req.params.id)
+  .then(
+    res.send("success")
+  )
 })
 
 
